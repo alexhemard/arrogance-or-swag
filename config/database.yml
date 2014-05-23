@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: aos-development
+  host: localhost
+  username: "<%= ENV['USER'] %>"
+  password:
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: aos-test
+  host: localhost
+  username: "<%= ENV['USER'] %>"
+  password:
+  min_messages: WARNING
+  pool: 5
+
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: arrogance-or-swag
+  pool: 5
