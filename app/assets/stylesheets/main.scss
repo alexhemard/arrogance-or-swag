@@ -2,11 +2,6 @@ $arroganceColor: #cc2200;
 $swagColor: #00ccaa;
 $backgroundColor: #fff;
 
-* {
-  margin:  0px;
-  padding: 0px;
-}
-
 body {
   font-family: sans-serif;
   background-color: $backgroundColor;
@@ -145,6 +140,10 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-animation-duration: 0.1s;
   -webkit-animation-name: slidein;
   -webkit-animation-timing-function: linear;
+
+  -moz-animation-duration: 0.1s;
+  -moz-animation-name: slidein;
+  -moz-animation-timing-function: linear;
 }
 
 .last-vote-container {
@@ -173,13 +172,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-@keyframes slidein {
+@-moz-keyframes slidein {
   from {
-    -webkit-transform: rotate(-45deg) scale(3);
+    transform: rotate(-45deg) scale(3);
   }
 
   to {
-    -webkit-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+
+
+
+@keyframes slidein {
+  from {
+    transform: rotate(-45deg) scale(3);
+  }
+
+  to {
+    transform: rotate(-45deg) scale(1);
   }
 }
 
