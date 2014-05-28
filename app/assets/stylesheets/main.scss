@@ -2,6 +2,11 @@ $arroganceColor: #cc2200;
 $swagColor: #00ccaa;
 $backgroundColor: #fff;
 
+* {
+  margin:  0px;
+  padding: 0px;
+}
+
 body {
   font-family: sans-serif;
   background-color: $backgroundColor;
@@ -18,7 +23,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .image-container {
   position: relative;
-  width: 600px;
+  width: 605px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -26,8 +31,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .vote-form {
   width: 100%;
-
-  margin-bottom: 4px;
 
   input[type="radio"] {
     position:   absolute;
@@ -42,7 +45,7 @@ h1, h2, h3, h4, h5, h6 {
 
 %vote-form-fieldset {
   font-weight: bold;
-  width: 298px;
+  width: 300px;
   margin: 0px;
   border: none;
   padding: 0px;
@@ -53,16 +56,16 @@ h1, h2, h3, h4, h5, h6 {
     float: left;
     text-align: center;
     vertical-align: middle;
-    width: 100%;
     height: 100%;
-    line-height: 75px;;
+    width: 75px;
+    line-height: 175%;
     font-weight: bold;
     font-size: 32px;
   }
 
   legend {
     font-size: 24px;
-    width: 100%;
+    width: 300px;
     padding: 0px;
     text-align: center;
     text-transform: uppercase;
@@ -80,6 +83,7 @@ h1, h2, h3, h4, h5, h6 {
   @extend %vote-form-fieldset;
 
   background-color: #cc2200;
+  float:left;
 
   legend {
     color: #cc2200;
@@ -95,6 +99,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .vote-form-swag {
   @extend %vote-form-fieldset;
+
+  float:right;
 
   background-color: $swagColor;
 
@@ -113,6 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .image-container img {
   width: 100%;
+  margin-top: 4px;
 }
 
 %last-vote-title {
