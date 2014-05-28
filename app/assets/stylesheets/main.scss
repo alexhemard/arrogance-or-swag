@@ -122,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   text-align: center;
   height: 1em;
+  display: none;
 
   top: 0; left: 0; bottom: 0; right: 0;
   margin: auto;
@@ -130,7 +131,13 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-transform:rotate(-45deg); /* Chrome, Safari, Opera */
   transform: rotate(-45deg);
 
+  animation-duration: 0.1s;
+  animation-name: slidein;
+  animation-timing-function: linear;
 
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-name: slidein;
+  -webkit-animation-timing-function: linear;
 }
 
 .last-vote-container {
@@ -146,6 +153,29 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
 }
+
+
+@-webkit-keyframes slidein {
+  from {
+    -webkit-transform: rotate(-45deg) scale(3);
+  }
+
+  to {
+    -webkit-transform: rotate(-45deg) scale(1);
+  }
+}
+
+
+@keyframes slidein {
+  from {
+    -webkit-transform: rotate(-45deg) scale(3);
+  }
+
+  to {
+    -webkit-transform: rotate(-45deg) scale(1);
+  }
+}
+
 
 .last-vote-image {
   width: 100%;

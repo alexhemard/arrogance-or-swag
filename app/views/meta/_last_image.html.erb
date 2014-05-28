@@ -2,9 +2,12 @@
   <h2>Previously...</h2>
   <div class="last-vote-container">
     <div class="last-vote-<%= image.arrogant_or_swag? %>"><%= image.arrogant_or_swag?.to_s.titleize %></div>
-  <%= image_tag image.image, class: "last-vote-image" %>
+    <%= image_tag image.image, class: "last-vote-image" %>
   </div>
   <% if last_vote image %>
-  <div class="last-vote-yours">You Said: <span class="last-vote-<%= last_vote(image).downcase %>-mini"><%= last_vote image %></div>
+  <div class="last-vote-yours">
+    You Said:
+    <span class="last-vote-<%= last_vote(image).downcase %>-mini"><%= last_vote image %></span>
+  </div>
   <% end %>
 </div>
