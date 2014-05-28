@@ -9,7 +9,13 @@
 
 <%= render "shared/header" %>
 
-<%= yield %>
+<div id="content">
+  <%= yield %>
+</div>
+
+<script type="text/javascript">
+  App = {}
+</script>
 
 <%= javascript_include_tag 'application' %>
 </body>

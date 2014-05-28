@@ -1,0 +1,40 @@
+
+<% if @last_image %>
+<%= render partial: "last_image", locals: { image: @last_image } %>
+<% end %>
+
+<div class="image-container">
+  <%= form_for Image.new, url:  image_votes_path(@image),
+                          data: {arrogance: "swag-form" },
+                          html: {class: "vote-form"} do |form| %>
+     <fieldset class="vote-form-arrogance">
+       <legend>Arrogance</legend>
+       <table class="vote-form-fields">
+         <tr>
+           <% 4.downto(1).each do |i| %>
+           <td>
+             <%= radio_button_tag(:vote_arrogance, i) %>
+             <%= label_tag("vote_arrogance_#{i}", i) %>
+           </td>
+           <% end %>
+         </tr>
+       </table>
+     </fieldset>
+
+     <fieldset class="vote-form-swag">
+       <legend>Swag</legend>
+       <table class="vote-form-fields">
+         <tr>
+           <% 1.upto(4).each do |i| %>
+           <td class="vote-swag-<%= "#{i}"%>">
+             <%= radio_button_tag(:vote_swag, i) %>
+             <%= label_tag("vote_swag_#{i}", i) %>
+           </td>
+           <% end %>
+         </tr>
+       </table>
+     </fieldset>
+  <% end %>
+
+  <%= image_tag @image.image %>
+</div>

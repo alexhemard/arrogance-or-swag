@@ -4,11 +4,15 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  resources :meta, :except => [:index], :path => '' do
+  resources :images, controller: :meta,
+                     except: [:index],
+                     path: '' do
+
     resources :votes, :only => [:create]
+
   end
 
-  get  "/index" => "meta#index"
+  get  "/index"  => "meta#index"
 
   root 'meta#random'
 

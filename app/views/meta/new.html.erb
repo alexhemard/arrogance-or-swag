@@ -1,1 +1,6 @@
 <h2>Submit Photo</h2>
+
+<%= form_for Image.new, :url => images_path, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :image %>
+  <%= form.submit "Submit" %>
+<% end %>
