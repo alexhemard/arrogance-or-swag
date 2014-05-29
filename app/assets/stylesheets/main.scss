@@ -204,13 +204,15 @@ h1, h2, h3, h4, h5, h6 {
 .last-vote-arrogant {
   @extend %last-vote-title;
 
+  font-size: 34px;
+
   color: $arroganceColor;
 }
 
 .last-vote-swag {
   @extend %last-vote-title;
 
-  font-size: 46px;
+  font-size: 62px;
 
   color: $swagColor;
 }
@@ -219,7 +221,7 @@ h1, h2, h3, h4, h5, h6 {
 .last-vote-both {
   @extend %last-vote-title;
 
-  font-size: 46px;
+  font-size: 62px;
 
   color: black;
 
