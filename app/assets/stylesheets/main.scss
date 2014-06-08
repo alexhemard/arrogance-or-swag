@@ -152,6 +152,7 @@ h1, h2, h3, h4, h5, h6 {
 .last-vote-container {
   position: relative;
   width: 200px;
+  padding: 20px 0 0 0;
 }
 
 .last-vote {
@@ -196,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .last-vote-image {
   width: 100%;
-  padding: 20px 0;
+  display: inherit;
 }
 
 .last-vote-arrogant {
@@ -241,4 +242,21 @@ h1, h2, h3, h4, h5, h6 {
   @extend %last-vote-mini;
 
   color: $arroganceColor;
+}
+
+.last-vote-stats {
+  margin: 0 0 20px 0;
+
+  .arrogance-factor {
+    height: 10px;
+
+    background-color: $arroganceColor;
+  }
+
+  .swag-o-meter {
+    height: 10px;
+
+    background-color: $swagColor;
+  }
+
 }

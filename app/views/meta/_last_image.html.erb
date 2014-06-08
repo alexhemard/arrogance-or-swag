@@ -4,6 +4,12 @@
     <div class="last-vote-<%= image.arrogant_or_swag? %>"><%= image.arrogant_or_swag?.to_s.titleize %></div>
     <%= image_tag image.image, class: "last-vote-image" %>
   </div>
+  <div class="last-vote-stats">
+    <div class="arrogance-factor" style="width: <%= arrogance_percent image %>%">
+    </div>
+    <div class="swag-o-meter" style="width: <%= swag_percent image  %>%">
+    </div>
+  </div>
   <% if last_vote image %>
   <div class="last-vote-yours">
     You Said:

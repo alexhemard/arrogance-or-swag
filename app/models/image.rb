@@ -31,6 +31,20 @@ class Image < ActiveRecord::Base
 End
   end
 
+  def vote_count
+    vote_arrogance_count + vote_swag_count
+  end
+
+  def arrogance
+    return 0 if vote_arrogance_count < 1
+    vote_arrogance.fdiv(vote_arrogance_count).round(2)
+  end
+
+  def swag
+    return 0 if vote_swag_count < 1
+    vote_swag.fdiv(vote_swag_count).round(2)
+  end
+
   private
 
   def vote type, amount
@@ -42,7 +56,7 @@ End
     amount = [1, amount].max
     amount = [amount, 4].min
 
-    Image.connection.execute "update images set \"#{type}\" = COALESCE(\"#{type}\", 0) + #{amount}, \"vote_count\" = COALESCE(\"vote_count\", 0) + 1 where \"images\".\"id\" = #{self.id}"
+    Image.connection.execute "update images set \"#{type}\" = COALESCE(\"#{type}\", 0) + #{amount}, \"#{type}_count\" = COALESCE(\"#{type}_count\", 0) + 1 where \"images\".\"id\" = #{self.id}"
     self.reload
   end
 end

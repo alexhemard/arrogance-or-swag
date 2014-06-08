@@ -22,4 +22,14 @@ module ApplicationHelper
       "Undecided..."
     end
   end
+
+  def arrogance_percent image
+    total_arrogance = image.vote_arrogance_count.fdiv(image.vote_count)
+    ((image.arrogance / 4.0) * 100) * total_arrogance
+  end
+
+  def swag_percent image
+    total_swag = image.vote_swag_count.fdiv(image.vote_count)
+    ((image.swag / 4.0) * 100) * total_swag
+  end
 end
