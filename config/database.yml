@@ -17,7 +17,6 @@ test:
   min_messages: WARNING
   pool: 5
 
-
 production:
   adapter: postgresql
   encoding: unicode

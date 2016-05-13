@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
                                size:         { in: 0..4.megabytes }
 
   validates_attachment_content_type :image,
-  :content_type => /\Aimage\/.*\Z/
+                                    :content_type => /\Aimage\/.*\Z/
 
   def arrogant_or_swag?
     if vote_arrogance == vote_swag
