@@ -23,6 +23,21 @@ class MetaController < ApplicationController
   def destroy
   end
 
+  def leaderboard
+
+    #@swag_image = Image.sorted_by_total_swag.first
+    arrogant_sql = "select id from (select vote_arrogance::float/NULLIF(vote_arrogance_count,0) as arrogance_average, id from Images) as sub group by id, arrogance_average order by arrogance_average desc LIMIT 1;"
+    arrogant_records_array = ActiveRecord::Base.connection.execute(arrogant_sql)
+    arrogant_sql_id = arrogant_records_array.getvalue(0,0)
+    @arrogant_image = Image.find_by_id(arrogant_sql_id)
+
+    swag_sql = "select id from (select vote_swag::float/NULLIF(vote_swag_count,0) as swag_average, id from Images) as sub group by id, swag_average order by swag_average desc LIMIT 1;"
+    swag_records_array = ActiveRecord::Base.connection.execute(swag_sql)
+    swag_sql_id = swag_records_array.getvalue(0,0)
+    @swag_image = Image.find_by_id(swag_sql_id)
+
+  end
+
   def image_params
     params.require(:image).permit(:image)
   end

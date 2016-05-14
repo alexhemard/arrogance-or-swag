@@ -1,0 +1,11 @@
+<h1>Leaderboard</h1>
+
+<h3>This image is the most swag, with a total score of <%=@swag_image.swag_vote_average.round(2)%> out of <%=@swag_image.vote_swag_count%> total votes.</h3>
+<div class="image-container">
+  <%= image_tag @swag_image.image %>
+</div>
+
+<h3>This image is the most arrogant, with a total score of <%=@arrogant_image.arrogant_vote_average.round(2)%> out of <%=@arrogant_image.vote_arrogance_count%> total votes.</h3>
+<div class="image-container">
+  <%= image_tag @arrogant_image.image %>
+</div>

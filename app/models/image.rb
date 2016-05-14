@@ -45,6 +45,24 @@ End
     vote_swag.fdiv(vote_swag_count).round(2)
   end
 
+  def swag_vote_average
+    return 0 if (vote_swag < 1 || vote_swag_count < 1)
+    vote_swag.to_f/vote_swag_count
+  end
+
+  def arrogant_vote_average
+    return 0 if (vote_arrogance < 1 || vote_arrogance_count < 1)
+    vote_arrogance.to_f/vote_arrogance_count
+  end
+
+  def self.sorted_by_total_arrogance
+    Image.all.sort_by(&:arrogant_vote_average)
+  end
+
+  def self.sorted_by_total_swag
+    Image.all.sort_by(&:swag_vote_average)
+  end
+
   private
 
   def vote type, amount
@@ -59,4 +77,5 @@ End
     Image.connection.execute "update images set \"#{type}\" = COALESCE(\"#{type}\", 0) + #{amount}, \"#{type}_count\" = COALESCE(\"#{type}_count\", 0) + 1 where \"images\".\"id\" = #{self.id}"
     self.reload
   end
+
 end
