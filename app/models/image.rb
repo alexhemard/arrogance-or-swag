@@ -45,10 +45,36 @@ End
     vote_swag.fdiv(vote_swag_count).round(2)
   end
 
+  def swag_vote_average
+    return 0 if (vote_swag < 1 || vote_swag_count < 1)
+    vote_swag.to_f/vote_swag_count
+  end
+
+  def arrogant_vote_average
+    return 0 if (vote_arrogance < 1 || vote_arrogance_count < 1)
+    vote_arrogance.to_f/vote_arrogance_count
+  end
+
+  def self.swaggiest
+    maximal :swag
+  end
+
+  def self.arrogantest
+    maximal :arrogance
+  end
+
   private
 
+  def self.maximal type
+    raise "bad type" unless [:arrogance, :swag].include? type
+
+    sql = Image.select("id, vote_#{type}::float / NULLIF(vote_#{type}_count,0) as #{type}_average").
+          group(:id, "#{type}_average").to_sql
+    joins("JOIN (#{sql}) #{type}_averages ON images.id = #{type}_averages.id").first
+  end
+
   def vote type, amount
-    return unless [:arrogance, :swag].include? type
+    raise "bad type" unless [:arrogance, :swag].include? type
 
     type   = "vote_#{type}"
 

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+  get "/leaderboard" => "meta#leaderboard"
+
   resources :images, controller: :meta,
                      except: [:index],
                      path: '' do
@@ -12,10 +14,8 @@ Rails.application.routes.draw do
 
   end
 
-  get  "/index"  => "meta#index"
 
-  root 'meta#random'
-
+  root "meta#random"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

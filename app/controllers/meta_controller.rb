@@ -23,6 +23,11 @@ class MetaController < ApplicationController
   def destroy
   end
 
+  def leaderboard
+    @swag_image      = Image.swaggiest
+    @arrogant_image  = Image.arrogantest
+  end
+
   def image_params
     params.require(:image).permit(:image)
   end
