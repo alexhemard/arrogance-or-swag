@@ -26,9 +26,9 @@ class Image < ActiveRecord::Base
   end
 
   def self.reset_all!
-    self.connection.execute <<End
+    self.connection.execute <<SQL
    update images set vote_arrogance=0, vote_swag=0
-End
+SQL
   end
 
   def vote_count
@@ -56,7 +56,13 @@ End
     amount = [1, amount].max
     amount = [amount, 4].min
 
-    Image.connection.execute "update images set \"#{type}\" = COALESCE(\"#{type}\", 0) + #{amount}, \"#{type}_count\" = COALESCE(\"#{type}_count\", 0) + 1 where \"images\".\"id\" = #{self.id}"
+    Image.connection.execute <<SQL
+UPDATE images
+  SET \"#{type}\"       = COALESCE(\"#{type}\", 0) + #{amount},
+      \"#{type}_count\" = COALESCE(\"#{type}_count\", 0) + 1
+  WHERE \"images\".\"id" = #{self.id}
+SQL
+
     self.reload
   end
 end

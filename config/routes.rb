@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   resources :images, controller: :meta,
                      except: [:index],
-                     path: '' do
+                     path: "" do
     resources :votes, :only => [:create]
   end
 
-  root 'meta#random'
+  root "meta#random"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
